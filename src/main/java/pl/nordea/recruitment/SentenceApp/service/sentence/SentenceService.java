@@ -4,5 +4,5 @@ import pl.nordea.recruitment.SentenceApp.model.Sentences;
 
 public interface SentenceService {
 
-    Sentences process(byte[] data);
+    Sentences processFile(byte[] data);
 }

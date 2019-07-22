@@ -14,7 +14,7 @@ import java.util.List;
 public class SentenceServiceImpl implements SentenceService {
 
     @Override
-    public Sentences process(byte[] data) {
+    public Sentences processFile(byte[] data) {
         String textToProcess = new String(data, StandardCharsets.UTF_8);
         TextParser parser = new TextParser();
 

@@ -4,7 +4,6 @@ import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
-import pl.nordea.recruitment.SentenceApp.model.Sentence;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,10 +15,13 @@ import java.util.stream.Collectors;
 
 public class TextParser {
 
+    private static final String SENTENCE_DETECTOR_FILE_PATH = "/opennlp/en-sent.bin";
+    private static final String TOKENIZER_FILE_PATH = "/opennlp/en-token.bin";
+
     private static final String PUNCTUATION_SYMBOLS_REGEX = "[\\p{Punct}\\s]+";
 
     public List<String> splitToSentences(String inputText) {
-        InputStream is = getClass().getResourceAsStream("/opennlp/en-sent.bin");
+        InputStream is = getClass().getResourceAsStream(SENTENCE_DETECTOR_FILE_PATH);
         SentenceModel model = null;
         try {
             model = new SentenceModel(is);
@@ -45,7 +47,7 @@ public class TextParser {
     }
 
     public List<String> splitToWordsOrdered(String sentence) {
-        InputStream inputStream = getClass().getResourceAsStream("/opennlp/en-token.bin");
+        InputStream inputStream = getClass().getResourceAsStream(TOKENIZER_FILE_PATH);
         TokenizerModel model = null;
         try {
             model = new TokenizerModel(inputStream);
